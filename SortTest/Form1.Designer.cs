@@ -35,6 +35,7 @@ namespace SortTest
             this.doubleBubbleSort = new System.Windows.Forms.Button();
             this.fastSort = new System.Windows.Forms.Button();
             this.instertSort = new System.Windows.Forms.Button();
+            this.sortingTime = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // testBtn
@@ -45,6 +46,7 @@ namespace SortTest
             this.testBtn.TabIndex = 0;
             this.testBtn.Text = "Test";
             this.testBtn.UseVisualStyleBackColor = true;
+            this.testBtn.Click += new System.EventHandler(this.testBtn_Click);
             // 
             // currentSort
             // 
@@ -95,11 +97,21 @@ namespace SortTest
             this.instertSort.UseVisualStyleBackColor = true;
             this.instertSort.Click += new System.EventHandler(this.instertSort_Click);
             // 
+            // sortingTime
+            // 
+            this.sortingTime.Location = new System.Drawing.Point(713, 43);
+            this.sortingTime.Name = "sortingTime";
+            this.sortingTime.Size = new System.Drawing.Size(75, 15);
+            this.sortingTime.TabIndex = 6;
+            this.sortingTime.Text = "0 ms";
+            this.sortingTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.sortingTime);
             this.Controls.Add(this.instertSort);
             this.Controls.Add(this.fastSort);
             this.Controls.Add(this.doubleBubbleSort);
@@ -120,6 +132,7 @@ namespace SortTest
         private System.Windows.Forms.Button doubleBubbleSort;
         private System.Windows.Forms.Button fastSort;
         private System.Windows.Forms.Button instertSort;
+        private System.Windows.Forms.Label sortingTime;
     }
 }
 

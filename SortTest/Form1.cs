@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -41,6 +43,18 @@ namespace SortTest
         {
             currentSort.Text = "Sortowanie Szybkie";
             sortType = "fast";
+        }
+
+        private void testBtn_Click(object sender, EventArgs e)
+        {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            //////////////////////
+            //Sorting types here//
+            //////////////////////
+            Thread.Sleep(5000); // Delete this line later
+            stopwatch.Stop();
+            sortingTime.Text = (stopwatch.ElapsedMilliseconds).ToString()+" ms";
         }
     }
 }
