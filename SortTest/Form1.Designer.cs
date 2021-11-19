@@ -48,12 +48,12 @@ namespace SortTest
             // 
             // currentSort
             // 
-            this.currentSort.AutoSize = true;
-            this.currentSort.Location = new System.Drawing.Point(643, 16);
+            this.currentSort.Location = new System.Drawing.Point(457, 16);
             this.currentSort.Name = "currentSort";
-            this.currentSort.Size = new System.Drawing.Size(64, 15);
+            this.currentSort.Size = new System.Drawing.Size(250, 15);
             this.currentSort.TabIndex = 1;
             this.currentSort.Text = "Not Found";
+            this.currentSort.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // bubbleSort
             // 
@@ -63,6 +63,7 @@ namespace SortTest
             this.bubbleSort.TabIndex = 2;
             this.bubbleSort.Text = "Bąbelkowe";
             this.bubbleSort.UseVisualStyleBackColor = true;
+            this.bubbleSort.Click += new System.EventHandler(this.bubbleSort_Click);
             // 
             // doubleBubbleSort
             // 
@@ -72,6 +73,7 @@ namespace SortTest
             this.doubleBubbleSort.TabIndex = 3;
             this.doubleBubbleSort.Text = "Bąbelkowe Dwukierunkowe";
             this.doubleBubbleSort.UseVisualStyleBackColor = true;
+            this.doubleBubbleSort.Click += new System.EventHandler(this.doubleBubbleSort_Click);
             // 
             // fastSort
             // 
@@ -81,6 +83,7 @@ namespace SortTest
             this.fastSort.TabIndex = 4;
             this.fastSort.Text = "Szybkie";
             this.fastSort.UseVisualStyleBackColor = true;
+            this.fastSort.Click += new System.EventHandler(this.fastSort_Click);
             // 
             // instertSort
             // 
@@ -90,6 +93,7 @@ namespace SortTest
             this.instertSort.TabIndex = 5;
             this.instertSort.Text = "Przez Wstawianie";
             this.instertSort.UseVisualStyleBackColor = true;
+            this.instertSort.Click += new System.EventHandler(this.instertSort_Click);
             // 
             // Form1
             // 
@@ -105,7 +109,6 @@ namespace SortTest
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
