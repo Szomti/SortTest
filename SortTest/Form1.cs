@@ -81,9 +81,6 @@ namespace SortTest
         private void testBtn_Click(object sender, EventArgs e)
         {
             var stopwatch = new Stopwatch();
-            ///////////////
-            //Random here//
-            ///////////////
             stopwatch.Start();
             if (sortType=="insert") {
                 int[] d = new int[amountOfNumbers];
@@ -241,11 +238,74 @@ namespace SortTest
                 }
                 Console.Write("{0,4}", "\n");
             }
-        //////////////////////
-        //Sorting types here//
-        //////////////////////
-        //Thread.Sleep(5000); // Delete this line later
-        stopwatch.Stop();
+            if (sortType== "fast") {
+                int[] d = new int[amountOfNumbers];
+                int i;
+                int j;
+                int piwot;
+
+                void Sortuj_szybko(int lewy, int prawy)
+                {
+                    int i;
+                    i = (lewy + prawy) / 2;
+                    piwot = d[i];
+                    d[i] = d[prawy];
+                    for (j = i = lewy; i < prawy; i++)
+                    {
+                        if (d[i] < piwot)
+                        {
+                            (d[i], d[j]) = (d[j], d[i]);
+                            j++;
+                        }
+                    }
+                    d[prawy] = d[j];
+                    d[j] = piwot;
+                    if (lewy < j - 1)
+                    {
+                        Sortuj_szybko(lewy, j - 1);
+                    }
+                    if (j + 1 < prawy)
+                    {
+                        Sortuj_szybko(j + 1, prawy);
+                    }
+                }
+
+                // Program główny
+                //---------------
+
+                RandomNumbers.Seed();
+
+                Console.Write("   Sortowanie szybkie\n" + "------------------------\n" + " (C)2005 Jerzy Walaszek \n\n" + "Przed sortowaniem:\n\n");
+
+                // Najpierw wypełniamy tablicę d[] liczbami pseudolosowymi
+                // a następnie wyświetlamy jej zawartość
+
+                for (i = 0; i < amountOfNumbers; i++)
+                {
+                    d[i] = RandomNumbers.NextNumber() % 100;
+                }
+                for (i = 0; i < amountOfNumbers; i++)
+                {
+                    Console.Write("{0,4}", d[i]);
+                }
+                Console.Write("{0,4}", "\n");
+
+                // Sortujemy
+
+                Sortuj_szybko(0, amountOfNumbers - 1);
+
+                // Wyświetlamy wynik sortowania
+
+                Console.Write("{0,4}", "Po sortowaniu:\n\n");
+                for (i = 0; i < amountOfNumbers; i++)
+                {
+                    Console.Write("{0,4}", d[i]);
+                }
+                Console.Write("{0,4}", "\n");
+
+            }
+            //Thread.Sleep(5000); // Delete this line later
+            stopwatch.Stop();
         sortingTime.Text = (stopwatch.ElapsedMilliseconds).ToString()+" ms";
         }
     }
