@@ -78,7 +78,6 @@ namespace SortTest
             }
         }
 
-
         private void testBtn_Click(object sender, EventArgs e)
         {
             var stopwatch = new Stopwatch();
@@ -132,12 +131,57 @@ namespace SortTest
                 }
                 Console.Write("{0,4}", "\n");
             }
-            //////////////////////
-            //Sorting types here//
-            //////////////////////
-            //Thread.Sleep(5000); // Delete this line later
-            stopwatch.Stop();
-            sortingTime.Text = (stopwatch.ElapsedMilliseconds).ToString()+" ms";
+
+            if (sortType=="bubble") {
+                int[] d = new int[amountOfNumbers];
+                int i;
+                int j;
+
+                Console.Write(" Sortowanie babelkowe\n" + "     WERSJA NR 1\n" + "----------------------\n" + "(C)2005 Jerzy Walaszek\n\n" + "Przed sortowaniem:\n\n");
+
+                // Najpierw wypełniamy tablicę d[] liczbami pseudolosowymi
+                // a następnie wyświetlamy jej zawartość
+
+                RandomNumbers.Seed();
+
+                for (i = 0; i < amountOfNumbers; i++)
+                {
+                    d[i] = RandomNumbers.NextNumber() % 100;
+                }
+                for (i = 0; i < amountOfNumbers; i++)
+                {
+                    Console.Write("{0,4}", d[i]);
+                }
+                Console.Write("{0,4}", "\n");
+
+                // Sortujemy
+
+                for (j = 0; j < amountOfNumbers - 1; j++)
+                {
+                    for (i = 0; i < amountOfNumbers - 1; i++)
+                    {
+                        if (d[i] > d[i + 1])
+                        {
+                            (d[i], d[i + 1]) = (d[i + 1], d[i]);
+                        }
+                    }
+                }
+
+                // Wyświetlamy wynik sortowania
+
+                Console.Write("{0,4}", "Po sortowaniu:\n\n");
+                for (i = 0; i < amountOfNumbers; i++)
+                {
+                    Console.Write("{0,4}", d[i]);
+                }
+                Console.Write("{0,4}", "\n");
+            }
+        //////////////////////
+        //Sorting types here//
+        //////////////////////
+        //Thread.Sleep(5000); // Delete this line later
+        stopwatch.Stop();
+        sortingTime.Text = (stopwatch.ElapsedMilliseconds).ToString()+" ms";
         }
     }
 }
