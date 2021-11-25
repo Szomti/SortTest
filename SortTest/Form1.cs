@@ -48,6 +48,9 @@ namespace SortTest
         private void testBtn_Click(object sender, EventArgs e)
         {
             var stopwatch = new Stopwatch();
+            ///////////////
+            //Random here//
+            ///////////////
             stopwatch.Start();
             //////////////////////
             //Sorting types here//
