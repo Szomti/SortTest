@@ -176,6 +176,71 @@ namespace SortTest
                 }
                 Console.Write("{0,4}", "\n");
             }
+            if (sortType== "doubleBubble") {
+                int[] d = new int[amountOfNumbers];
+                int i;
+                int pmin;
+                int pmax;
+                int p;
+
+                Console.Write("Dwukierunkowe Sortowanie babelkowe\n" + "----------------------------------\n" + "     (C)2005  Jerzy Walaszek\n\n" + "Przed sortowaniem:\n\n");
+
+                // Najpierw wypełniamy tablicę d[] liczbami pseudolosowymi
+                // a następnie wyświetlamy jej zawartość
+
+                RandomNumbers.Seed();
+
+                for (i = 0; i < amountOfNumbers; i++)
+                {
+                    d[i] = RandomNumbers.NextNumber() % 100;
+                }
+                for (i = 0; i < amountOfNumbers; i++)
+                {
+                    Console.Write("{0,4}", d[i]);
+                }
+                Console.Write("{0,4}", "\n");
+
+                // Sortujemy
+
+                pmin = 0;
+                pmax = amountOfNumbers - 2;
+                do
+                {
+                    p = -1;
+                    for (i = pmin; i <= pmax; i++)
+                    {
+                        if (d[i] > d[i + 1])
+                        {
+                            (d[i], d[i + 1]) = (d[i + 1], d[i]);
+                            p = i;
+                        }
+                    }
+                    if (p < 0)
+                    {
+                        break;
+                    }
+                    pmax = p - 1;
+                    p = -1;
+                    for (i = pmax; i >= pmin; i--)
+                    {
+                        if (d[i] > d[i + 1])
+                        {
+                            (d[i], d[i + 1]) = (d[i + 1], d[i]);
+                            p = i;
+                        }
+                    }
+                    pmin = p + 1;
+                } while (p >= 0);
+
+                // Wyświetlamy wynik sortowania
+
+                Console.Write("{0,4}", "Po sortowaniu:\n\n");
+                for (i = 0; i < amountOfNumbers; i++)
+                {
+                    Console.Write("{0,4}", d[i]);
+                }
+                Console.Write("{0,4}", "\n");
+            }
         //////////////////////
         //Sorting types here//
         //////////////////////
