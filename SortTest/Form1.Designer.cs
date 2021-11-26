@@ -43,7 +43,7 @@ namespace SortTest
             this.slowestSortTime = new System.Windows.Forms.Label();
             this.executeAmount = new System.Windows.Forms.TextBox();
             this.executeAmountLabel = new System.Windows.Forms.Label();
-            this.stateOfApp = new System.Windows.Forms.Label();
+            this.usingFile = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // testBtn
@@ -183,22 +183,22 @@ namespace SortTest
             this.executeAmountLabel.Text = "Execute";
             this.executeAmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // stateOfApp
+            // usingFile
             // 
-            this.stateOfApp.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.stateOfApp.Location = new System.Drawing.Point(271, 237);
-            this.stateOfApp.Name = "stateOfApp";
-            this.stateOfApp.Size = new System.Drawing.Size(150, 50);
-            this.stateOfApp.TabIndex = 14;
-            this.stateOfApp.Text = "File: \r\nNot Found";
-            this.stateOfApp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.usingFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.usingFile.Location = new System.Drawing.Point(275, 235);
+            this.usingFile.Name = "usingFile";
+            this.usingFile.Size = new System.Drawing.Size(150, 50);
+            this.usingFile.TabIndex = 14;
+            this.usingFile.Text = "File: \r\nNot Found";
+            this.usingFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 294);
-            this.Controls.Add(this.stateOfApp);
+            this.Controls.Add(this.usingFile);
             this.Controls.Add(this.executeAmountLabel);
             this.Controls.Add(this.executeAmount);
             this.Controls.Add(this.slowestSortTime);
@@ -236,7 +236,7 @@ namespace SortTest
         private System.Windows.Forms.Label slowestSortTime;
         private System.Windows.Forms.TextBox executeAmount;
         private System.Windows.Forms.Label executeAmountLabel;
-        private System.Windows.Forms.Label stateOfApp;
+        private System.Windows.Forms.Label usingFile;
     }
 }
 
