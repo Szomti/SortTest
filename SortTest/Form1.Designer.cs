@@ -36,6 +36,7 @@ namespace SortTest
             this.fastSort = new System.Windows.Forms.Button();
             this.instertSort = new System.Windows.Forms.Button();
             this.sortingTime = new System.Windows.Forms.Label();
+            this.loadFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // testBtn
@@ -50,7 +51,7 @@ namespace SortTest
             // 
             // currentSort
             // 
-            this.currentSort.Location = new System.Drawing.Point(457, 16);
+            this.currentSort.Location = new System.Drawing.Point(376, 16);
             this.currentSort.Name = "currentSort";
             this.currentSort.Size = new System.Drawing.Size(250, 15);
             this.currentSort.TabIndex = 1;
@@ -106,11 +107,22 @@ namespace SortTest
             this.sortingTime.Text = "0 ms";
             this.sortingTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // loadFile
+            // 
+            this.loadFile.Location = new System.Drawing.Point(632, 12);
+            this.loadFile.Name = "loadFile";
+            this.loadFile.Size = new System.Drawing.Size(75, 23);
+            this.loadFile.TabIndex = 7;
+            this.loadFile.Text = "Load";
+            this.loadFile.UseVisualStyleBackColor = true;
+            this.loadFile.Click += new System.EventHandler(this.loadFile_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.loadFile);
             this.Controls.Add(this.sortingTime);
             this.Controls.Add(this.instertSort);
             this.Controls.Add(this.fastSort);
@@ -133,6 +145,7 @@ namespace SortTest
         private System.Windows.Forms.Button fastSort;
         private System.Windows.Forms.Button instertSort;
         private System.Windows.Forms.Label sortingTime;
+        private System.Windows.Forms.Button loadFile;
     }
 }
 

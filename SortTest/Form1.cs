@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -307,6 +308,18 @@ namespace SortTest
             //Thread.Sleep(5000); // Delete this line later
             stopwatch.Stop();
         sortingTime.Text = (stopwatch.ElapsedMilliseconds).ToString()+" ms";
+        }
+
+        private void loadFile_Click(object sender, EventArgs e)
+        {
+            using (TextReader reader = File.OpenText("test.txt"))
+            {
+                for(int i=1;i <= File.ReadAllLines("test.txt").Length;i++)
+                {
+                    int x = int.Parse(reader.ReadLine());
+                    Debug.Write(x);
+                }
+            }
         }
     }
 }
