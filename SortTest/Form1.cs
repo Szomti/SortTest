@@ -47,7 +47,7 @@ namespace SortTest
             sortType = "fast";
         }
 
-        private int amountOfNumbers = 10000;
+        private int amountOfNumbers;
 
         internal static class RandomNumbers
         {
@@ -86,6 +86,10 @@ namespace SortTest
             {
                 amountOfNumbers = (File.ReadAllLines("test.txt").Length);
             }
+            else
+            {
+                amountOfNumbers = 10000;
+            }
             int[] tabForSort = new int[amountOfNumbers];
             int i;
             int j;
@@ -98,7 +102,7 @@ namespace SortTest
             {
                 using (TextReader reader = File.OpenText("test.txt"))
                 {
-                    for (int ii = 0; ii <= File.ReadAllLines("test.txt").Length; ii++)
+                    for (int ii = 0; ii < File.ReadAllLines("test.txt").Length; ii++)
                     {
                         int numberFromFile = int.Parse(reader.ReadLine());
                         Debug.Write(numberFromFile);
