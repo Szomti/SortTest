@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SortTest
@@ -23,8 +16,8 @@ namespace SortTest
         string sortType = "";
         bool loaded = false;
         private int amountOfNumbers;
-        long fastestSortTimeMS = 2147483647;
-        long slowestSortTimeMS = -2147483647;
+        long fastestSortTimeMS = long.MaxValue;
+        long slowestSortTimeMS = long.MinValue;
 
         private void instertSort_Click(object sender, EventArgs e)
         {
@@ -64,7 +57,7 @@ namespace SortTest
 
         internal static class RandomNumbers
         {
-            private static System.Random r;
+            private static Random r;
 
             public static int NextNumber()
             {
@@ -84,12 +77,7 @@ namespace SortTest
 
             public static void Seed()
             {
-                r = new System.Random();
-            }
-
-            public static void Seed(int seed)
-            {
-                r = new System.Random(seed);
+                r = new Random();
             }
         }
 
