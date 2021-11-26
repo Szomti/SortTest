@@ -21,6 +21,7 @@ namespace SortTest
         }
 
         string sortType = "";
+        bool loaded = false;
 
         private void instertSort_Click(object sender, EventArgs e)
         {
@@ -81,32 +82,26 @@ namespace SortTest
 
         private void testBtn_Click(object sender, EventArgs e)
         {
+            int[] d = new int[amountOfNumbers];
+            int i;
+            int j;
+            int x;
+            int pmin;
+            int pmax;
+            int p;
+            int piwot;
+
             var stopwatch = new Stopwatch();
             stopwatch.Start();
             if (sortType=="insert") {
-                int[] d = new int[amountOfNumbers];
-                int i;
-                int j;
-                int x;
-
-                Console.Write(" Sortowanie przez wstawianie\n" + "-----------------------------\n" + "   (C)2005  Jerzy Walaszek\n\n" + "Przed sortowaniem:\n\n");
-
-                // Najpierw wypełniamy tablicę d[] liczbami pseudolosowymi
-                // a następnie wyświetlamy jej zawartość
-
-                RandomNumbers.Seed();
-
-                for (i = 0; i < amountOfNumbers; i++)
+                if (!loaded)
                 {
-                    d[i] = RandomNumbers.NextNumber() % 100;
+                    RandomNumbers.Seed();
+                    for (i = 0; i < amountOfNumbers; i++)
+                    {
+                        d[i] = RandomNumbers.NextNumber() % 100;
+                    }
                 }
-                for (i = 0; i < amountOfNumbers; i++)
-                {
-                    Console.Write("{0,4}", d[i]);
-                }
-                Console.Write("{0,4}", "\n");
-
-                // Sortujemy
 
                 for (j = amountOfNumbers - 2; j >= 0; j--)
                 {
@@ -119,40 +114,17 @@ namespace SortTest
                     }
                     d[i - 1] = x;
                 }
-
-                // Wyświetlamy wynik sortowania
-
-                Console.Write("{0,4}", "Po sortowaniu:\n\n");
-                for (i = 0; i < amountOfNumbers; i++)
-                {
-                    Console.Write("{0,4}", d[i]);
-                }
-                Console.Write("{0,4}", "\n");
             }
 
             if (sortType=="bubble") {
-                int[] d = new int[amountOfNumbers];
-                int i;
-                int j;
-
-                Console.Write(" Sortowanie babelkowe\n" + "     WERSJA NR 1\n" + "----------------------\n" + "(C)2005 Jerzy Walaszek\n\n" + "Przed sortowaniem:\n\n");
-
-                // Najpierw wypełniamy tablicę d[] liczbami pseudolosowymi
-                // a następnie wyświetlamy jej zawartość
-
-                RandomNumbers.Seed();
-
-                for (i = 0; i < amountOfNumbers; i++)
+                if (!loaded)
                 {
-                    d[i] = RandomNumbers.NextNumber() % 100;
+                    RandomNumbers.Seed();
+                    for (i = 0; i < amountOfNumbers; i++)
+                    {
+                        d[i] = RandomNumbers.NextNumber() % 100;
+                    }
                 }
-                for (i = 0; i < amountOfNumbers; i++)
-                {
-                    Console.Write("{0,4}", d[i]);
-                }
-                Console.Write("{0,4}", "\n");
-
-                // Sortujemy
 
                 for (j = 0; j < amountOfNumbers - 1; j++)
                 {
@@ -164,41 +136,16 @@ namespace SortTest
                         }
                     }
                 }
-
-                // Wyświetlamy wynik sortowania
-
-                Console.Write("{0,4}", "Po sortowaniu:\n\n");
-                for (i = 0; i < amountOfNumbers; i++)
-                {
-                    Console.Write("{0,4}", d[i]);
-                }
-                Console.Write("{0,4}", "\n");
             }
             if (sortType== "doubleBubble") {
-                int[] d = new int[amountOfNumbers];
-                int i;
-                int pmin;
-                int pmax;
-                int p;
-
-                Console.Write("Dwukierunkowe Sortowanie babelkowe\n" + "----------------------------------\n" + "     (C)2005  Jerzy Walaszek\n\n" + "Przed sortowaniem:\n\n");
-
-                // Najpierw wypełniamy tablicę d[] liczbami pseudolosowymi
-                // a następnie wyświetlamy jej zawartość
-
-                RandomNumbers.Seed();
-
-                for (i = 0; i < amountOfNumbers; i++)
+                if (!loaded)
                 {
-                    d[i] = RandomNumbers.NextNumber() % 100;
+                    RandomNumbers.Seed();
+                    for (i = 0; i < amountOfNumbers; i++)
+                    {
+                        d[i] = RandomNumbers.NextNumber() % 100;
+                    }
                 }
-                for (i = 0; i < amountOfNumbers; i++)
-                {
-                    Console.Write("{0,4}", d[i]);
-                }
-                Console.Write("{0,4}", "\n");
-
-                // Sortujemy
 
                 pmin = 0;
                 pmax = amountOfNumbers - 2;
@@ -229,29 +176,16 @@ namespace SortTest
                     }
                     pmin = p + 1;
                 } while (p >= 0);
-
-                // Wyświetlamy wynik sortowania
-
-                Console.Write("{0,4}", "Po sortowaniu:\n\n");
-                for (i = 0; i < amountOfNumbers; i++)
-                {
-                    Console.Write("{0,4}", d[i]);
-                }
-                Console.Write("{0,4}", "\n");
             }
             if (sortType== "fast") {
-                int[] d = new int[amountOfNumbers];
-                int i;
-                int j;
-                int piwot;
 
-                void Sortuj_szybko(int lewy, int prawy)
+                void fastSort(int left, int right)
                 {
                     int i;
-                    i = (lewy + prawy) / 2;
+                    i = (left + right) / 2;
                     piwot = d[i];
-                    d[i] = d[prawy];
-                    for (j = i = lewy; i < prawy; i++)
+                    d[i] = d[right];
+                    for (j = i = left; i < right; i++)
                     {
                         if (d[i] < piwot)
                         {
@@ -259,55 +193,32 @@ namespace SortTest
                             j++;
                         }
                     }
-                    d[prawy] = d[j];
+                    d[right] = d[j];
                     d[j] = piwot;
-                    if (lewy < j - 1)
+                    if (left < j - 1)
                     {
-                        Sortuj_szybko(lewy, j - 1);
+                        fastSort(left, j - 1);
                     }
-                    if (j + 1 < prawy)
+                    if (j + 1 < right)
                     {
-                        Sortuj_szybko(j + 1, prawy);
+                        fastSort(j + 1, right);
                     }
                 }
 
-                // Program główny
-                //---------------
-
-                RandomNumbers.Seed();
-
-                Console.Write("   Sortowanie szybkie\n" + "------------------------\n" + " (C)2005 Jerzy Walaszek \n\n" + "Przed sortowaniem:\n\n");
-
-                // Najpierw wypełniamy tablicę d[] liczbami pseudolosowymi
-                // a następnie wyświetlamy jej zawartość
-
-                for (i = 0; i < amountOfNumbers; i++)
+                if (!loaded)
                 {
-                    d[i] = RandomNumbers.NextNumber() % 100;
+                    RandomNumbers.Seed();
+                    for (i = 0; i < amountOfNumbers; i++)
+                    {
+                        d[i] = RandomNumbers.NextNumber() % 100;
+                    }
                 }
-                for (i = 0; i < amountOfNumbers; i++)
-                {
-                    Console.Write("{0,4}", d[i]);
-                }
-                Console.Write("{0,4}", "\n");
 
-                // Sortujemy
-
-                Sortuj_szybko(0, amountOfNumbers - 1);
-
-                // Wyświetlamy wynik sortowania
-
-                Console.Write("{0,4}", "Po sortowaniu:\n\n");
-                for (i = 0; i < amountOfNumbers; i++)
-                {
-                    Console.Write("{0,4}", d[i]);
-                }
-                Console.Write("{0,4}", "\n");
-
+                fastSort(0, amountOfNumbers - 1);
             }
             //Thread.Sleep(5000); // Delete this line later
             stopwatch.Stop();
-        sortingTime.Text = (stopwatch.ElapsedMilliseconds).ToString()+" ms";
+            sortingTime.Text = "Time: "+(stopwatch.ElapsedMilliseconds).ToString()+" ms";
         }
 
         private void loadFile_Click(object sender, EventArgs e)
@@ -319,6 +230,7 @@ namespace SortTest
                     int x = int.Parse(reader.ReadLine());
                     Debug.Write(x);
                 }
+                loaded = true;
             }
         }
     }

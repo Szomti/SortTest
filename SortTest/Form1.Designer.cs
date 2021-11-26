@@ -100,11 +100,11 @@ namespace SortTest
             // 
             // sortingTime
             // 
-            this.sortingTime.Location = new System.Drawing.Point(713, 43);
+            this.sortingTime.Location = new System.Drawing.Point(663, 43);
             this.sortingTime.Name = "sortingTime";
-            this.sortingTime.Size = new System.Drawing.Size(75, 15);
+            this.sortingTime.Size = new System.Drawing.Size(125, 15);
             this.sortingTime.TabIndex = 6;
-            this.sortingTime.Text = "0 ms";
+            this.sortingTime.Text = "Time: 0 ms";
             this.sortingTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // loadFile
