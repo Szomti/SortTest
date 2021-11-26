@@ -18,7 +18,7 @@ namespace SortTest
         private int amountOfNumbers;
         long fastestSortTimeMS = long.MaxValue;
         long slowestSortTimeMS = long.MinValue;
-        int repeatAmountVal = 1;
+        int executeAmountVal = 1;
         string filePath = string.Empty;
 
         private void instertSort_Click(object sender, EventArgs e)
@@ -39,10 +39,10 @@ namespace SortTest
             sortType = "doubleBubble";
         }
 
-        private void fastSort_Click(object sender, EventArgs e)
+        private void quickSort_Click(object sender, EventArgs e)
         {
             currentSort.Text = "Sortowanie Szybkie";
-            sortType = "fast";
+            sortType = "quick";
         }
 
         private void heapSort_Click(object sender, EventArgs e)
@@ -109,13 +109,13 @@ namespace SortTest
             int positionMax;
             int currentPosition;
             int piwot;
-            if (repeatAmount.Text != null || repeatAmount.Text != "")
+            if (executeAmount.Text != null || executeAmount.Text != "")
             {
-                repeatAmountVal = int.Parse(repeatAmount.Text);
+                executeAmountVal = int.Parse(executeAmount.Text);
             }
             else
             {
-                repeatAmountVal = 1;
+                executeAmountVal = 1;
             }
             void desort()
             {
@@ -159,7 +159,7 @@ namespace SortTest
                 stopwatch.Restart();
             }
             if (sortType=="insert") {
-                for (ii = 0; ii < repeatAmountVal; ii++)
+                for (ii = 0; ii < executeAmountVal; ii++)
                 {
                     desort();
                     stopwatch.Start();
@@ -180,7 +180,7 @@ namespace SortTest
             }
 
             if (sortType=="bubble") {
-                for (ii = 0; ii < repeatAmountVal; ii++)
+                for (ii = 0; ii < executeAmountVal; ii++)
                 {
                     desort();
                     stopwatch.Start();
@@ -199,7 +199,7 @@ namespace SortTest
                 }
             }
             if (sortType== "doubleBubble") {
-                for (ii = 0; ii < repeatAmountVal; ii++)
+                for (ii = 0; ii < executeAmountVal; ii++)
                 {
                     desort();
                     stopwatch.Start();
@@ -236,12 +236,12 @@ namespace SortTest
                     sortTime(stopwatch.ElapsedMilliseconds);
                 }
             }
-            if (sortType== "fast") {
-                for (ii = 0; ii < repeatAmountVal; ii++)
+            if (sortType== "quick") {
+                for (ii = 0; ii < executeAmountVal; ii++)
                 {
                     desort();
                     stopwatch.Start();
-                    void fastSort(int left, int right)
+                    void quickSort(int left, int right)
                     {
                         int i;
                         i = (left + right) / 2;
@@ -259,20 +259,20 @@ namespace SortTest
                         tabForSort[j] = piwot;
                         if (left < j - 1)
                         {
-                            fastSort(left, j - 1);
+                            quickSort(left, j - 1);
                         }
                         if (j + 1 < right)
                         {
-                            fastSort(j + 1, right);
+                            quickSort(j + 1, right);
                         }
                     }
-                    fastSort(0, amountOfNumbers - 1);
+                    quickSort(0, amountOfNumbers - 1);
                     stopwatch.Stop();
                     sortTime(stopwatch.ElapsedMilliseconds);
                 }
             }
             if(sortType == "heap") {
-                for (ii = 0; ii < repeatAmountVal; ii++)
+                for (ii = 0; ii < executeAmountVal; ii++)
                 {
                     desort();
                     stopwatch.Start();
@@ -319,7 +319,7 @@ namespace SortTest
                 }
             }
             if(sortType == "merge") {
-                for (ii = 0; ii < repeatAmountVal; ii++)
+                for (ii = 0; ii < executeAmountVal; ii++)
                 {
                     desort();
                     stopwatch.Start();

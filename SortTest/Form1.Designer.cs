@@ -33,7 +33,7 @@ namespace SortTest
             this.currentSort = new System.Windows.Forms.Label();
             this.bubbleSort = new System.Windows.Forms.Button();
             this.doubleBubbleSort = new System.Windows.Forms.Button();
-            this.fastSort = new System.Windows.Forms.Button();
+            this.quickSort = new System.Windows.Forms.Button();
             this.instertSort = new System.Windows.Forms.Button();
             this.sortingTime = new System.Windows.Forms.Label();
             this.loadFile = new System.Windows.Forms.Button();
@@ -41,8 +41,8 @@ namespace SortTest
             this.mergeSort = new System.Windows.Forms.Button();
             this.fastestSortTime = new System.Windows.Forms.Label();
             this.slowestSortTime = new System.Windows.Forms.Label();
-            this.repeatAmount = new System.Windows.Forms.TextBox();
-            this.repeatAmountLabel = new System.Windows.Forms.Label();
+            this.executeAmount = new System.Windows.Forms.TextBox();
+            this.executeAmountLabel = new System.Windows.Forms.Label();
             this.stateOfApp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -85,15 +85,15 @@ namespace SortTest
             this.doubleBubbleSort.UseVisualStyleBackColor = true;
             this.doubleBubbleSort.Click += new System.EventHandler(this.doubleBubbleSort_Click);
             // 
-            // fastSort
+            // quickSort
             // 
-            this.fastSort.Location = new System.Drawing.Point(12, 105);
-            this.fastSort.Name = "fastSort";
-            this.fastSort.Size = new System.Drawing.Size(200, 25);
-            this.fastSort.TabIndex = 4;
-            this.fastSort.Text = "Szybkie";
-            this.fastSort.UseVisualStyleBackColor = true;
-            this.fastSort.Click += new System.EventHandler(this.fastSort_Click);
+            this.quickSort.Location = new System.Drawing.Point(12, 105);
+            this.quickSort.Name = "quickSort";
+            this.quickSort.Size = new System.Drawing.Size(200, 25);
+            this.quickSort.TabIndex = 4;
+            this.quickSort.Text = "Szybkie";
+            this.quickSort.UseVisualStyleBackColor = true;
+            this.quickSort.Click += new System.EventHandler(this.quickSort_Click);
             // 
             // instertSort
             // 
@@ -165,23 +165,23 @@ namespace SortTest
             this.slowestSortTime.Text = "Slowest\r\nNot Found\r\nTime: 0 ms\r\n";
             this.slowestSortTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // repeatAmount
+            // executeAmount
             // 
-            this.repeatAmount.Location = new System.Drawing.Point(554, 41);
-            this.repeatAmount.Name = "repeatAmount";
-            this.repeatAmount.Size = new System.Drawing.Size(100, 23);
-            this.repeatAmount.TabIndex = 12;
-            this.repeatAmount.Text = "1";
-            this.repeatAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.executeAmount.Location = new System.Drawing.Point(554, 41);
+            this.executeAmount.Name = "executeAmount";
+            this.executeAmount.Size = new System.Drawing.Size(100, 23);
+            this.executeAmount.TabIndex = 12;
+            this.executeAmount.Text = "1";
+            this.executeAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // repeatAmountLabel
+            // executeAmountLabel
             // 
-            this.repeatAmountLabel.Location = new System.Drawing.Point(473, 43);
-            this.repeatAmountLabel.Name = "repeatAmountLabel";
-            this.repeatAmountLabel.Size = new System.Drawing.Size(75, 17);
-            this.repeatAmountLabel.TabIndex = 13;
-            this.repeatAmountLabel.Text = "Powtórzenia";
-            this.repeatAmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.executeAmountLabel.Location = new System.Drawing.Point(473, 43);
+            this.executeAmountLabel.Name = "executeAmountLabel";
+            this.executeAmountLabel.Size = new System.Drawing.Size(75, 17);
+            this.executeAmountLabel.TabIndex = 13;
+            this.executeAmountLabel.Text = "Execute";
+            this.executeAmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // stateOfApp
             // 
@@ -199,8 +199,8 @@ namespace SortTest
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 294);
             this.Controls.Add(this.stateOfApp);
-            this.Controls.Add(this.repeatAmountLabel);
-            this.Controls.Add(this.repeatAmount);
+            this.Controls.Add(this.executeAmountLabel);
+            this.Controls.Add(this.executeAmount);
             this.Controls.Add(this.slowestSortTime);
             this.Controls.Add(this.fastestSortTime);
             this.Controls.Add(this.mergeSort);
@@ -208,7 +208,7 @@ namespace SortTest
             this.Controls.Add(this.loadFile);
             this.Controls.Add(this.sortingTime);
             this.Controls.Add(this.instertSort);
-            this.Controls.Add(this.fastSort);
+            this.Controls.Add(this.quickSort);
             this.Controls.Add(this.doubleBubbleSort);
             this.Controls.Add(this.bubbleSort);
             this.Controls.Add(this.currentSort);
@@ -226,7 +226,7 @@ namespace SortTest
         private System.Windows.Forms.Label currentSort;
         private System.Windows.Forms.Button bubbleSort;
         private System.Windows.Forms.Button doubleBubbleSort;
-        private System.Windows.Forms.Button fastSort;
+        private System.Windows.Forms.Button quickSort;
         private System.Windows.Forms.Button instertSort;
         private System.Windows.Forms.Label sortingTime;
         private System.Windows.Forms.Button loadFile;
@@ -234,8 +234,8 @@ namespace SortTest
         private System.Windows.Forms.Button mergeSort;
         private System.Windows.Forms.Label fastestSortTime;
         private System.Windows.Forms.Label slowestSortTime;
-        private System.Windows.Forms.TextBox repeatAmount;
-        private System.Windows.Forms.Label repeatAmountLabel;
+        private System.Windows.Forms.TextBox executeAmount;
+        private System.Windows.Forms.Label executeAmountLabel;
         private System.Windows.Forms.Label stateOfApp;
     }
 }
