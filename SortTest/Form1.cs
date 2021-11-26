@@ -34,7 +34,7 @@ namespace SortTest
 
         private void doubleBubbleSort_Click(object sender, EventArgs e)
         {
-            currentSort.Text = "Sortownie Bąbelkowe Dwukierunkowe";
+            currentSort.Text = "Sortowanie Bąbelkowe Dwukierunkowe";
             sortType = "doubleBubble";
         }
 
@@ -90,43 +90,77 @@ namespace SortTest
             }
             else
             {
-                amountOfNumbers = 10000;
+                amountOfNumbers = 100000;
             }
             int[] tabForSort = new int[amountOfNumbers];
+            int[] p = new int[amountOfNumbers];
+            if (sortType == "heap")
+            {
+                tabForSort = new int[amountOfNumbers + 1];
+            }
             int i; // variable for "for"
             int j; // variable for "for"
+            int k;
+            int m;
             int ii;
             int currentNumber;
             int positionMin;
             int positionMax;
             int currentPosition;
             int piwot;
-            repeatAmountVal = int.Parse(repeatAmount.Text);
-            if (loaded)
+            if (repeatAmount.Text != null || repeatAmount.Text != "")
             {
-                using (TextReader reader = File.OpenText("test.txt"))
+                repeatAmountVal = int.Parse(repeatAmount.Text);
+            }
+            else
+            {
+                repeatAmountVal = 1;
+            }
+            void desort()
+            {
+                if (loaded)
                 {
-                    for (ii = 0; ii < File.ReadAllLines("test.txt").Length; ii++)
+                    using (TextReader reader = File.OpenText("test.txt"))
                     {
-                        int numberFromFile = int.Parse(reader.ReadLine());
-                        tabForSort[ii] = numberFromFile;
+                        for (ii = 0; ii < File.ReadAllLines("test.txt").Length; ii++)
+                        {
+                            int numberFromFile = int.Parse(reader.ReadLine());
+                            tabForSort[ii] = numberFromFile;
+                        }
                     }
                 }
-            }
-            else {
-                RandomNumbers.Seed();
-                for (i = 0; i < amountOfNumbers; i++)
+                else
                 {
-                    tabForSort[i] = RandomNumbers.NextNumber() % amountOfNumbers;
+                    RandomNumbers.Seed();
+                    for (i = 0; i < amountOfNumbers; i++)
+                    {
+                        tabForSort[i] = RandomNumbers.NextNumber() % amountOfNumbers;
+                    }
                 }
             }
 
             var stopwatch = new Stopwatch();
-            stopwatch.Start();
-
+            void sortTime(long sortingTimeMS)
+            {
+                Debug.Write(currentSort.Text + "\nTime: " + sortingTimeMS + " ms\n\n");
+                sortingTime.Text = "Time: " + (sortingTimeMS).ToString() + " ms";
+                if (sortingTimeMS < fastestSortTimeMS)
+                {
+                    fastestSortTime.Text = "Fastest\n" + currentSort.Text + "\nTime: " + sortingTimeMS + " ms";
+                    fastestSortTimeMS = sortingTimeMS;
+                }
+                if (sortingTimeMS > slowestSortTimeMS)
+                {
+                    slowestSortTime.Text = "Slowest\n" + currentSort.Text + "\nTime: " + sortingTimeMS + " ms";
+                    slowestSortTimeMS = sortingTimeMS;
+                }
+                stopwatch.Restart();
+            }
             if (sortType=="insert") {
                 for (ii = 0; ii < repeatAmountVal; ii++)
                 {
+                    desort();
+                    stopwatch.Start();
                     for (j = amountOfNumbers - 2; j >= 0; j--)
                     {
                         currentNumber = tabForSort[j];
@@ -138,98 +172,186 @@ namespace SortTest
                         }
                         tabForSort[i - 1] = currentNumber;
                     }
+                    stopwatch.Stop();
+                    sortTime(stopwatch.ElapsedMilliseconds);
                 }
             }
 
             if (sortType=="bubble") {
-                for (j = 0; j < amountOfNumbers - 1; j++)
+                for (ii = 0; ii < repeatAmountVal; ii++)
                 {
-                    for (i = 0; i < amountOfNumbers - 1; i++)
+                    desort();
+                    stopwatch.Start();
+                    for (j = 0; j < amountOfNumbers - 1; j++)
                     {
-                        if (tabForSort[i] > tabForSort[i + 1])
+                        for (i = 0; i < amountOfNumbers - 1; i++)
                         {
-                            (tabForSort[i], tabForSort[i + 1]) = (tabForSort[i + 1], tabForSort[i]);
+                            if (tabForSort[i] > tabForSort[i + 1])
+                            {
+                                (tabForSort[i], tabForSort[i + 1]) = (tabForSort[i + 1], tabForSort[i]);
+                            }
                         }
                     }
+                    stopwatch.Stop();
+                    sortTime(stopwatch.ElapsedMilliseconds);
                 }
             }
             if (sortType== "doubleBubble") {
-                positionMin = 0;
-                positionMax = amountOfNumbers - 2;
-                do
+                for (ii = 0; ii < repeatAmountVal; ii++)
                 {
-                    currentPosition = -1;
-                    for (i = positionMin; i <= positionMax; i++)
+                    desort();
+                    stopwatch.Start();
+                    positionMin = 0;
+                    positionMax = amountOfNumbers - 2;
+                    do
                     {
-                        if (tabForSort[i] > tabForSort[i + 1])
+                        currentPosition = -1;
+                        for (i = positionMin; i <= positionMax; i++)
                         {
-                            (tabForSort[i], tabForSort[i + 1]) = (tabForSort[i + 1], tabForSort[i]);
-                            currentPosition = i;
+                            if (tabForSort[i] > tabForSort[i + 1])
+                            {
+                                (tabForSort[i], tabForSort[i + 1]) = (tabForSort[i + 1], tabForSort[i]);
+                                currentPosition = i;
+                            }
                         }
-                    }
-                    if (currentPosition < 0)
-                    {
-                        break;
-                    }
-                    positionMax = currentPosition - 1;
-                    currentPosition = -1;
-                    for (i = positionMax; i >= positionMin; i--)
-                    {
-                        if (tabForSort[i] > tabForSort[i + 1])
+                        if (currentPosition < 0)
                         {
-                            (tabForSort[i], tabForSort[i + 1]) = (tabForSort[i + 1], tabForSort[i]);
-                            currentPosition = i;
+                            break;
                         }
-                    }
-                    positionMin = currentPosition + 1;
-                } while (currentPosition >= 0);
+                        positionMax = currentPosition - 1;
+                        currentPosition = -1;
+                        for (i = positionMax; i >= positionMin; i--)
+                        {
+                            if (tabForSort[i] > tabForSort[i + 1])
+                            {
+                                (tabForSort[i], tabForSort[i + 1]) = (tabForSort[i + 1], tabForSort[i]);
+                                currentPosition = i;
+                            }
+                        }
+                        positionMin = currentPosition + 1;
+                    } while (currentPosition >= 0);
+                    stopwatch.Stop();
+                    sortTime(stopwatch.ElapsedMilliseconds);
+                }
             }
             if (sortType== "fast") {
-                void fastSort(int left, int right)
+                for (ii = 0; ii < repeatAmountVal; ii++)
                 {
-                    int i;
-                    i = (left + right) / 2;
-                    piwot = tabForSort[i];
-                    tabForSort[i] = tabForSort[right];
-                    for (j = i = left; i < right; i++)
+                    desort();
+                    stopwatch.Start();
+                    void fastSort(int left, int right)
                     {
-                        if (tabForSort[i] < piwot)
+                        int i;
+                        i = (left + right) / 2;
+                        piwot = tabForSort[i];
+                        tabForSort[i] = tabForSort[right];
+                        for (j = i = left; i < right; i++)
                         {
-                            (tabForSort[i], tabForSort[j]) = (tabForSort[j], tabForSort[i]);
-                            j++;
+                            if (tabForSort[i] < piwot)
+                            {
+                                (tabForSort[i], tabForSort[j]) = (tabForSort[j], tabForSort[i]);
+                                j++;
+                            }
+                        }
+                        tabForSort[right] = tabForSort[j];
+                        tabForSort[j] = piwot;
+                        if (left < j - 1)
+                        {
+                            fastSort(left, j - 1);
+                        }
+                        if (j + 1 < right)
+                        {
+                            fastSort(j + 1, right);
                         }
                     }
-                    tabForSort[right] = tabForSort[j];
-                    tabForSort[j] = piwot;
-                    if (left < j - 1)
-                    {
-                        fastSort(left, j - 1);
-                    }
-                    if (j + 1 < right)
-                    {
-                        fastSort(j + 1, right);
-                    }
+                    fastSort(0, amountOfNumbers - 1);
+                    stopwatch.Stop();
+                    sortTime(stopwatch.ElapsedMilliseconds);
                 }
-
-                fastSort(0, amountOfNumbers - 1);
             }
             if(sortType == "heap") {
-            
+                for (ii = 0; ii < repeatAmountVal; ii++)
+                {
+                    desort();
+                    stopwatch.Start();
+                    for (i = 2; i <= amountOfNumbers; i++)
+                    {
+                        j = i;
+                        k = j / 2;
+                        currentNumber = tabForSort[i];
+                        while ((k > 0) && (tabForSort[k] < currentNumber))
+                        {
+                            tabForSort[j] = tabForSort[k];
+                            j = k;
+                            k = j / 2;
+                        }
+                        tabForSort[j] = currentNumber;
+                    }
+                    for (i = amountOfNumbers; i > 1; i--)
+                    {
+                        (tabForSort[1], tabForSort[i]) = (tabForSort[i], tabForSort[1]);
+                        j = 1;
+                        k = 2;
+                        while (k < i)
+                        {
+                            if ((k + 1 < i) && (tabForSort[k + 1] > tabForSort[k]))
+                            {
+                                m = k + 1;
+                            }
+                            else
+                            {
+                                m = k;
+                            }
+                            if (tabForSort[m] <= tabForSort[j])
+                            {
+                                break;
+                            }
+                            (tabForSort[j], tabForSort[m]) = (tabForSort[m], tabForSort[j]);
+                            j = m;
+                            k = j + j;
+                        }
+                    }
+
+                    stopwatch.Stop();
+                    sortTime(stopwatch.ElapsedMilliseconds);
+                }
             }
             if(sortType == "merge") {
-                
-            }
-            stopwatch.Stop();
-            sortingTime.Text = "Time: "+(stopwatch.ElapsedMilliseconds).ToString()+" ms";
-            if (stopwatch.ElapsedMilliseconds < fastestSortTimeMS)
-            {
-                fastestSortTime.Text = "Fastest\n" + currentSort.Text + "\nTime: " + stopwatch.ElapsedMilliseconds + " ms";
-                fastestSortTimeMS = stopwatch.ElapsedMilliseconds;
-            }
-            if (stopwatch.ElapsedMilliseconds > slowestSortTimeMS)
-            {
-                slowestSortTime.Text = "Slowest\n" + currentSort.Text + "\nTime: " + stopwatch.ElapsedMilliseconds + " ms";
-                slowestSortTimeMS = stopwatch.ElapsedMilliseconds;
+                for (ii = 0; ii < repeatAmountVal; ii++)
+                {
+                    desort();
+                    stopwatch.Start();
+                    void MergeSort(int i_p, int i_k)
+                    {
+                        int i_s;
+                        int i1;
+                        int i2;
+                        int i;
+
+                        i_s = (i_p + i_k + 1) / 2;
+                        if (i_s - i_p > 1)
+                        {
+                            MergeSort(i_p, i_s - 1);
+                        }
+                        if (i_k - i_s > 0)
+                        {
+                            MergeSort(i_s, i_k);
+                        }
+                        i1 = i_p;
+                        i2 = i_s;
+                        for (i = i_p; i <= i_k; i++)
+                        {
+                            p[i] = ((i1 == i_s) || ((i2 <= i_k) && (tabForSort[i1] > tabForSort[i2]))) ? tabForSort[i2++] : tabForSort[i1++];
+                        }
+                        for (i = i_p; i <= i_k; i++)
+                        {
+                            tabForSort[i] = p[i];
+                        }
+                    }
+                    MergeSort(0, amountOfNumbers - 1);
+                    stopwatch.Stop();
+                    sortTime(stopwatch.ElapsedMilliseconds);
+                }
             }
         }
 

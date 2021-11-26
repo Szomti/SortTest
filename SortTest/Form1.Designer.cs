@@ -170,6 +170,8 @@ namespace SortTest
             this.repeatAmount.Name = "repeatAmount";
             this.repeatAmount.Size = new System.Drawing.Size(100, 23);
             this.repeatAmount.TabIndex = 12;
+            this.repeatAmount.Text = "1";
+            this.repeatAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // repeatAmountLabel
             // 
