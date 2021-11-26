@@ -104,7 +104,7 @@ namespace SortTest
             // 
             // sortingTime
             // 
-            this.sortingTime.Location = new System.Drawing.Point(663, 43);
+            this.sortingTime.Location = new System.Drawing.Point(663, 48);
             this.sortingTime.Name = "sortingTime";
             this.sortingTime.Size = new System.Drawing.Size(125, 15);
             this.sortingTime.TabIndex = 6;
@@ -144,18 +144,20 @@ namespace SortTest
             // 
             // fastestSortTime
             // 
-            this.fastestSortTime.Location = new System.Drawing.Point(563, 74);
+            this.fastestSortTime.ForeColor = System.Drawing.Color.Green;
+            this.fastestSortTime.Location = new System.Drawing.Point(538, 74);
             this.fastestSortTime.Name = "fastestSortTime";
-            this.fastestSortTime.Size = new System.Drawing.Size(225, 45);
+            this.fastestSortTime.Size = new System.Drawing.Size(250, 45);
             this.fastestSortTime.TabIndex = 10;
             this.fastestSortTime.Text = "Fastest\r\nNot Found\r\nTime: 0 ms\r\n";
             this.fastestSortTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // slowestSortTime
             // 
-            this.slowestSortTime.Location = new System.Drawing.Point(563, 122);
+            this.slowestSortTime.ForeColor = System.Drawing.Color.Maroon;
+            this.slowestSortTime.Location = new System.Drawing.Point(538, 119);
             this.slowestSortTime.Name = "slowestSortTime";
-            this.slowestSortTime.Size = new System.Drawing.Size(225, 45);
+            this.slowestSortTime.Size = new System.Drawing.Size(250, 45);
             this.slowestSortTime.TabIndex = 11;
             this.slowestSortTime.Text = "Slowest\r\nNot Found\r\nTime: 0 ms\r\n";
             this.slowestSortTime.TextAlign = System.Drawing.ContentAlignment.TopRight;

@@ -22,6 +22,9 @@ namespace SortTest
 
         string sortType = "";
         bool loaded = false;
+        private int amountOfNumbers;
+        long fastestSortTimeMS = 2147483647;
+        long slowestSortTimeMS = -2147483647;
 
         private void instertSort_Click(object sender, EventArgs e)
         {
@@ -58,8 +61,6 @@ namespace SortTest
             currentSort.Text = "Sortowanie Przez Scalanie";
             sortType = "merge";
         }
-
-        private int amountOfNumbers;
 
         internal static class RandomNumbers
         {
@@ -256,6 +257,16 @@ namespace SortTest
             //Thread.Sleep(5000); // Delete this line later
             stopwatch.Stop();
             sortingTime.Text = "Time: "+(stopwatch.ElapsedMilliseconds).ToString()+" ms";
+            if (stopwatch.ElapsedMilliseconds < fastestSortTimeMS)
+            {
+                fastestSortTime.Text = "Fastest\n" + currentSort.Text + "\nTime: " + stopwatch.ElapsedMilliseconds + " ms";
+                fastestSortTimeMS = stopwatch.ElapsedMilliseconds;
+            }
+            if (stopwatch.ElapsedMilliseconds > slowestSortTimeMS)
+            {
+                slowestSortTime.Text = "Slowest\n" + currentSort.Text + "\nTime: " + stopwatch.ElapsedMilliseconds + " ms";
+                slowestSortTimeMS = stopwatch.ElapsedMilliseconds;
+            }
         }
 
         private void loadFile_Click(object sender, EventArgs e)
