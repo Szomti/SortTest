@@ -37,6 +37,8 @@ namespace SortTest
             this.instertSort = new System.Windows.Forms.Button();
             this.sortingTime = new System.Windows.Forms.Label();
             this.loadFile = new System.Windows.Forms.Button();
+            this.heapSort = new System.Windows.Forms.Button();
+            this.mergeSort = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // testBtn
@@ -118,11 +120,33 @@ namespace SortTest
             this.loadFile.UseVisualStyleBackColor = true;
             this.loadFile.Click += new System.EventHandler(this.loadFile_Click);
             // 
+            // heapSort
+            // 
+            this.heapSort.Location = new System.Drawing.Point(12, 136);
+            this.heapSort.Name = "heapSort";
+            this.heapSort.Size = new System.Drawing.Size(200, 25);
+            this.heapSort.TabIndex = 8;
+            this.heapSort.Text = "Przez Kopcowanie";
+            this.heapSort.UseVisualStyleBackColor = true;
+            this.heapSort.Click += new System.EventHandler(this.heapSort_Click);
+            // 
+            // mergeSort
+            // 
+            this.mergeSort.Location = new System.Drawing.Point(12, 167);
+            this.mergeSort.Name = "mergeSort";
+            this.mergeSort.Size = new System.Drawing.Size(200, 25);
+            this.mergeSort.TabIndex = 9;
+            this.mergeSort.Text = "Przez Scalanie";
+            this.mergeSort.UseVisualStyleBackColor = true;
+            this.mergeSort.Click += new System.EventHandler(this.merchSort_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.mergeSort);
+            this.Controls.Add(this.heapSort);
             this.Controls.Add(this.loadFile);
             this.Controls.Add(this.sortingTime);
             this.Controls.Add(this.instertSort);
@@ -147,6 +171,8 @@ namespace SortTest
         private System.Windows.Forms.Button instertSort;
         private System.Windows.Forms.Label sortingTime;
         private System.Windows.Forms.Button loadFile;
+        private System.Windows.Forms.Button heapSort;
+        private System.Windows.Forms.Button mergeSort;
     }
 }
 

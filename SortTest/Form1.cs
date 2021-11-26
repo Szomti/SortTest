@@ -47,6 +47,18 @@ namespace SortTest
             sortType = "fast";
         }
 
+        private void heapSort_Click(object sender, EventArgs e)
+        {
+            currentSort.Text = "Sortowanie Przez Kopcowanie";
+            sortType = "heap";
+        }
+
+        private void merchSort_Click(object sender, EventArgs e)
+        {
+            currentSort.Text = "Sortowanie Przez Scalanie";
+            sortType = "merge";
+        }
+
         private int amountOfNumbers;
 
         internal static class RandomNumbers
