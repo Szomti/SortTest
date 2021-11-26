@@ -185,10 +185,11 @@ namespace SortTest
             // 
             // usingFile
             // 
+            this.usingFile.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.usingFile.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.usingFile.Location = new System.Drawing.Point(275, 235);
+            this.usingFile.Location = new System.Drawing.Point(0, 244);
             this.usingFile.Name = "usingFile";
-            this.usingFile.Size = new System.Drawing.Size(150, 50);
+            this.usingFile.Size = new System.Drawing.Size(669, 50);
             this.usingFile.TabIndex = 14;
             this.usingFile.Text = "File: \r\nNot Found";
             this.usingFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
