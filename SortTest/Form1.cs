@@ -105,7 +105,6 @@ namespace SortTest
                     for (int ii = 0; ii < File.ReadAllLines("test.txt").Length; ii++)
                     {
                         int numberFromFile = int.Parse(reader.ReadLine());
-                        Debug.Write(numberFromFile);
                         tabForSort[ii] = numberFromFile;
                     }
                 }
