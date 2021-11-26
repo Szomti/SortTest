@@ -39,6 +39,8 @@ namespace SortTest
             this.loadFile = new System.Windows.Forms.Button();
             this.heapSort = new System.Windows.Forms.Button();
             this.mergeSort = new System.Windows.Forms.Button();
+            this.fastestSortTime = new System.Windows.Forms.Label();
+            this.slowestSortTime = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // testBtn
@@ -140,11 +142,31 @@ namespace SortTest
             this.mergeSort.UseVisualStyleBackColor = true;
             this.mergeSort.Click += new System.EventHandler(this.merchSort_Click);
             // 
+            // fastestSortTime
+            // 
+            this.fastestSortTime.Location = new System.Drawing.Point(563, 74);
+            this.fastestSortTime.Name = "fastestSortTime";
+            this.fastestSortTime.Size = new System.Drawing.Size(225, 45);
+            this.fastestSortTime.TabIndex = 10;
+            this.fastestSortTime.Text = "Fastest\r\nNot Found\r\nTime: 0 ms\r\n";
+            this.fastestSortTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // slowestSortTime
+            // 
+            this.slowestSortTime.Location = new System.Drawing.Point(563, 122);
+            this.slowestSortTime.Name = "slowestSortTime";
+            this.slowestSortTime.Size = new System.Drawing.Size(225, 45);
+            this.slowestSortTime.TabIndex = 11;
+            this.slowestSortTime.Text = "Slowest\r\nNot Found\r\nTime: 0 ms\r\n";
+            this.slowestSortTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.slowestSortTime);
+            this.Controls.Add(this.fastestSortTime);
             this.Controls.Add(this.mergeSort);
             this.Controls.Add(this.heapSort);
             this.Controls.Add(this.loadFile);
@@ -173,6 +195,8 @@ namespace SortTest
         private System.Windows.Forms.Button loadFile;
         private System.Windows.Forms.Button heapSort;
         private System.Windows.Forms.Button mergeSort;
+        private System.Windows.Forms.Label fastestSortTime;
+        private System.Windows.Forms.Label slowestSortTime;
     }
 }
 

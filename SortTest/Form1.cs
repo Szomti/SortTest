@@ -247,6 +247,12 @@ namespace SortTest
 
                 fastSort(0, amountOfNumbers - 1);
             }
+            if(sortType == "heap") {
+            
+            }
+            if(sortType == "merge") {
+                
+            }
             //Thread.Sleep(5000); // Delete this line later
             stopwatch.Stop();
             sortingTime.Text = "Time: "+(stopwatch.ElapsedMilliseconds).ToString()+" ms";
