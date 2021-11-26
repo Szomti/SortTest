@@ -43,11 +43,12 @@ namespace SortTest
             this.slowestSortTime = new System.Windows.Forms.Label();
             this.repeatAmount = new System.Windows.Forms.TextBox();
             this.repeatAmountLabel = new System.Windows.Forms.Label();
+            this.stateOfApp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // testBtn
             // 
-            this.testBtn.Location = new System.Drawing.Point(713, 12);
+            this.testBtn.Location = new System.Drawing.Point(579, 12);
             this.testBtn.Name = "testBtn";
             this.testBtn.Size = new System.Drawing.Size(75, 23);
             this.testBtn.TabIndex = 0;
@@ -57,7 +58,7 @@ namespace SortTest
             // 
             // currentSort
             // 
-            this.currentSort.Location = new System.Drawing.Point(376, 16);
+            this.currentSort.Location = new System.Drawing.Point(242, 17);
             this.currentSort.Name = "currentSort";
             this.currentSort.Size = new System.Drawing.Size(250, 15);
             this.currentSort.TabIndex = 1;
@@ -106,7 +107,7 @@ namespace SortTest
             // 
             // sortingTime
             // 
-            this.sortingTime.Location = new System.Drawing.Point(663, 79);
+            this.sortingTime.Location = new System.Drawing.Point(529, 74);
             this.sortingTime.Name = "sortingTime";
             this.sortingTime.Size = new System.Drawing.Size(125, 15);
             this.sortingTime.TabIndex = 6;
@@ -116,7 +117,7 @@ namespace SortTest
             // loadFile
             // 
             this.loadFile.ForeColor = System.Drawing.Color.Red;
-            this.loadFile.Location = new System.Drawing.Point(632, 12);
+            this.loadFile.Location = new System.Drawing.Point(498, 12);
             this.loadFile.Name = "loadFile";
             this.loadFile.Size = new System.Drawing.Size(75, 23);
             this.loadFile.TabIndex = 7;
@@ -147,7 +148,7 @@ namespace SortTest
             // fastestSortTime
             // 
             this.fastestSortTime.ForeColor = System.Drawing.Color.Green;
-            this.fastestSortTime.Location = new System.Drawing.Point(538, 102);
+            this.fastestSortTime.Location = new System.Drawing.Point(404, 102);
             this.fastestSortTime.Name = "fastestSortTime";
             this.fastestSortTime.Size = new System.Drawing.Size(250, 45);
             this.fastestSortTime.TabIndex = 10;
@@ -157,7 +158,7 @@ namespace SortTest
             // slowestSortTime
             // 
             this.slowestSortTime.ForeColor = System.Drawing.Color.Maroon;
-            this.slowestSortTime.Location = new System.Drawing.Point(538, 147);
+            this.slowestSortTime.Location = new System.Drawing.Point(404, 147);
             this.slowestSortTime.Name = "slowestSortTime";
             this.slowestSortTime.Size = new System.Drawing.Size(250, 45);
             this.slowestSortTime.TabIndex = 11;
@@ -166,7 +167,7 @@ namespace SortTest
             // 
             // repeatAmount
             // 
-            this.repeatAmount.Location = new System.Drawing.Point(688, 41);
+            this.repeatAmount.Location = new System.Drawing.Point(554, 41);
             this.repeatAmount.Name = "repeatAmount";
             this.repeatAmount.Size = new System.Drawing.Size(100, 23);
             this.repeatAmount.TabIndex = 12;
@@ -175,18 +176,29 @@ namespace SortTest
             // 
             // repeatAmountLabel
             // 
-            this.repeatAmountLabel.Location = new System.Drawing.Point(607, 44);
+            this.repeatAmountLabel.Location = new System.Drawing.Point(473, 43);
             this.repeatAmountLabel.Name = "repeatAmountLabel";
             this.repeatAmountLabel.Size = new System.Drawing.Size(75, 17);
             this.repeatAmountLabel.TabIndex = 13;
             this.repeatAmountLabel.Text = "Powtórzenia";
             this.repeatAmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // stateOfApp
+            // 
+            this.stateOfApp.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.stateOfApp.Location = new System.Drawing.Point(271, 237);
+            this.stateOfApp.Name = "stateOfApp";
+            this.stateOfApp.Size = new System.Drawing.Size(150, 50);
+            this.stateOfApp.TabIndex = 14;
+            this.stateOfApp.Text = "File: \r\nNot Found";
+            this.stateOfApp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(669, 294);
+            this.Controls.Add(this.stateOfApp);
             this.Controls.Add(this.repeatAmountLabel);
             this.Controls.Add(this.repeatAmount);
             this.Controls.Add(this.slowestSortTime);
@@ -224,6 +236,7 @@ namespace SortTest
         private System.Windows.Forms.Label slowestSortTime;
         private System.Windows.Forms.TextBox repeatAmount;
         private System.Windows.Forms.Label repeatAmountLabel;
+        private System.Windows.Forms.Label stateOfApp;
     }
 }
 

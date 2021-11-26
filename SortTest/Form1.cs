@@ -121,6 +121,7 @@ namespace SortTest
             {
                 if (loaded)
                 {
+                    stateOfApp.Text = "File:\n"+Path.GetFileName(filePath);
                     using (TextReader reader = File.OpenText(filePath))
                     {
                         for (ii = 0; ii < File.ReadAllLines(filePath).Length; ii++)
@@ -132,6 +133,7 @@ namespace SortTest
                 }
                 else
                 {
+                    stateOfApp.Text = "File:\n" + "Not Found";
                     RandomNumbers.Seed();
                     for (i = 0; i < amountOfNumbers; i++)
                     {
@@ -362,6 +364,7 @@ namespace SortTest
                 case true:
                     loadFile.ForeColor = Color.Red;
                     loaded = false;
+                    stateOfApp.Text = "File:\n" + "Not Found";
                     break;
                 case false:
                     using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -379,6 +382,7 @@ namespace SortTest
                     }
                     loadFile.ForeColor = Color.Green;
                     loaded = true;
+                    stateOfApp.Text = "File:\n" + Path.GetFileName(filePath);
                     break;
             }
         }
