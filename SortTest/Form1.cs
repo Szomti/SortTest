@@ -104,12 +104,12 @@ namespace SortTest
                 amountOfNumbers = 10000;
             }
             int[] tabForSort = new int[amountOfNumbers];
-            int i;
-            int j;
-            int x;
-            int pmin;
-            int pmax;
-            int p;
+            int i; // variable for "for"
+            int j; // variable for "for"
+            int currentNumber;
+            int positionMin;
+            int positionMax;
+            int currentPosition;
             int piwot;
             if (loaded)
             {
@@ -122,42 +122,31 @@ namespace SortTest
                     }
                 }
             }
+            else {
+                RandomNumbers.Seed();
+                for (i = 0; i < amountOfNumbers; i++)
+                {
+                    tabForSort[i] = RandomNumbers.NextNumber() % amountOfNumbers;
+                }
+            }
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
             if (sortType=="insert") {
-                if (!loaded)
-                {
-                    RandomNumbers.Seed();
-                    for (i = 0; i < amountOfNumbers; i++)
-                    {
-                        tabForSort[i] = RandomNumbers.NextNumber() % 100;
-                    }
-                }
-
                 for (j = amountOfNumbers - 2; j >= 0; j--)
                 {
-                    x = tabForSort[j];
+                    currentNumber = tabForSort[j];
                     i = j + 1;
-                    while ((i < amountOfNumbers) && (x > tabForSort[i]))
+                    while ((i < amountOfNumbers) && (currentNumber > tabForSort[i]))
                     {
                         tabForSort[i - 1] = tabForSort[i];
                         i++;
                     }
-                    tabForSort[i - 1] = x;
+                    tabForSort[i - 1] = currentNumber;
                 }
             }
 
             if (sortType=="bubble") {
-                if (!loaded)
-                {
-                    RandomNumbers.Seed();
-                    for (i = 0; i < amountOfNumbers; i++)
-                    {
-                        tabForSort[i] = RandomNumbers.NextNumber() % 100;
-                    }
-                }
-
                 for (j = 0; j < amountOfNumbers - 1; j++)
                 {
                     for (i = 0; i < amountOfNumbers - 1; i++)
@@ -170,47 +159,37 @@ namespace SortTest
                 }
             }
             if (sortType== "doubleBubble") {
-                if (!loaded)
-                {
-                    RandomNumbers.Seed();
-                    for (i = 0; i < amountOfNumbers; i++)
-                    {
-                        tabForSort[i] = RandomNumbers.NextNumber() % 100;
-                    }
-                }
-
-                pmin = 0;
-                pmax = amountOfNumbers - 2;
+                positionMin = 0;
+                positionMax = amountOfNumbers - 2;
                 do
                 {
-                    p = -1;
-                    for (i = pmin; i <= pmax; i++)
+                    currentPosition = -1;
+                    for (i = positionMin; i <= positionMax; i++)
                     {
                         if (tabForSort[i] > tabForSort[i + 1])
                         {
                             (tabForSort[i], tabForSort[i + 1]) = (tabForSort[i + 1], tabForSort[i]);
-                            p = i;
+                            currentPosition = i;
                         }
                     }
-                    if (p < 0)
+                    if (currentPosition < 0)
                     {
                         break;
                     }
-                    pmax = p - 1;
-                    p = -1;
-                    for (i = pmax; i >= pmin; i--)
+                    positionMax = currentPosition - 1;
+                    currentPosition = -1;
+                    for (i = positionMax; i >= positionMin; i--)
                     {
                         if (tabForSort[i] > tabForSort[i + 1])
                         {
                             (tabForSort[i], tabForSort[i + 1]) = (tabForSort[i + 1], tabForSort[i]);
-                            p = i;
+                            currentPosition = i;
                         }
                     }
-                    pmin = p + 1;
-                } while (p >= 0);
+                    positionMin = currentPosition + 1;
+                } while (currentPosition >= 0);
             }
             if (sortType== "fast") {
-
                 void fastSort(int left, int right)
                 {
                     int i;
@@ -237,15 +216,6 @@ namespace SortTest
                     }
                 }
 
-                if (!loaded)
-                {
-                    RandomNumbers.Seed();
-                    for (i = 0; i < amountOfNumbers; i++)
-                    {
-                        tabForSort[i] = RandomNumbers.NextNumber() % 100;
-                    }
-                }
-
                 fastSort(0, amountOfNumbers - 1);
             }
             if(sortType == "heap") {
@@ -254,7 +224,6 @@ namespace SortTest
             if(sortType == "merge") {
                 
             }
-            //Thread.Sleep(5000); // Delete this line later
             stopwatch.Stop();
             sortingTime.Text = "Time: "+(stopwatch.ElapsedMilliseconds).ToString()+" ms";
             if (stopwatch.ElapsedMilliseconds < fastestSortTimeMS)
