@@ -41,6 +41,8 @@ namespace SortTest
             this.mergeSort = new System.Windows.Forms.Button();
             this.fastestSortTime = new System.Windows.Forms.Label();
             this.slowestSortTime = new System.Windows.Forms.Label();
+            this.repeatAmount = new System.Windows.Forms.TextBox();
+            this.repeatAmountLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // testBtn
@@ -104,7 +106,7 @@ namespace SortTest
             // 
             // sortingTime
             // 
-            this.sortingTime.Location = new System.Drawing.Point(663, 48);
+            this.sortingTime.Location = new System.Drawing.Point(663, 79);
             this.sortingTime.Name = "sortingTime";
             this.sortingTime.Size = new System.Drawing.Size(125, 15);
             this.sortingTime.TabIndex = 6;
@@ -145,7 +147,7 @@ namespace SortTest
             // fastestSortTime
             // 
             this.fastestSortTime.ForeColor = System.Drawing.Color.Green;
-            this.fastestSortTime.Location = new System.Drawing.Point(538, 74);
+            this.fastestSortTime.Location = new System.Drawing.Point(538, 102);
             this.fastestSortTime.Name = "fastestSortTime";
             this.fastestSortTime.Size = new System.Drawing.Size(250, 45);
             this.fastestSortTime.TabIndex = 10;
@@ -155,18 +157,36 @@ namespace SortTest
             // slowestSortTime
             // 
             this.slowestSortTime.ForeColor = System.Drawing.Color.Maroon;
-            this.slowestSortTime.Location = new System.Drawing.Point(538, 119);
+            this.slowestSortTime.Location = new System.Drawing.Point(538, 147);
             this.slowestSortTime.Name = "slowestSortTime";
             this.slowestSortTime.Size = new System.Drawing.Size(250, 45);
             this.slowestSortTime.TabIndex = 11;
             this.slowestSortTime.Text = "Slowest\r\nNot Found\r\nTime: 0 ms\r\n";
             this.slowestSortTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // repeatAmount
+            // 
+            this.repeatAmount.Location = new System.Drawing.Point(688, 41);
+            this.repeatAmount.Name = "repeatAmount";
+            this.repeatAmount.Size = new System.Drawing.Size(100, 23);
+            this.repeatAmount.TabIndex = 12;
+            // 
+            // repeatAmountLabel
+            // 
+            this.repeatAmountLabel.Location = new System.Drawing.Point(607, 44);
+            this.repeatAmountLabel.Name = "repeatAmountLabel";
+            this.repeatAmountLabel.Size = new System.Drawing.Size(75, 17);
+            this.repeatAmountLabel.TabIndex = 13;
+            this.repeatAmountLabel.Text = "Powtórzenia";
+            this.repeatAmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.repeatAmountLabel);
+            this.Controls.Add(this.repeatAmount);
             this.Controls.Add(this.slowestSortTime);
             this.Controls.Add(this.fastestSortTime);
             this.Controls.Add(this.mergeSort);
@@ -182,6 +202,7 @@ namespace SortTest
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -199,6 +220,8 @@ namespace SortTest
         private System.Windows.Forms.Button mergeSort;
         private System.Windows.Forms.Label fastestSortTime;
         private System.Windows.Forms.Label slowestSortTime;
+        private System.Windows.Forms.TextBox repeatAmount;
+        private System.Windows.Forms.Label repeatAmountLabel;
     }
 }
 

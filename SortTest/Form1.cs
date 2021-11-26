@@ -18,6 +18,7 @@ namespace SortTest
         private int amountOfNumbers;
         long fastestSortTimeMS = long.MaxValue;
         long slowestSortTimeMS = long.MinValue;
+        int repeatAmountVal = 1;
 
         private void instertSort_Click(object sender, EventArgs e)
         {
@@ -94,16 +95,18 @@ namespace SortTest
             int[] tabForSort = new int[amountOfNumbers];
             int i; // variable for "for"
             int j; // variable for "for"
+            int ii;
             int currentNumber;
             int positionMin;
             int positionMax;
             int currentPosition;
             int piwot;
+            repeatAmountVal = int.Parse(repeatAmount.Text);
             if (loaded)
             {
                 using (TextReader reader = File.OpenText("test.txt"))
                 {
-                    for (int ii = 0; ii < File.ReadAllLines("test.txt").Length; ii++)
+                    for (ii = 0; ii < File.ReadAllLines("test.txt").Length; ii++)
                     {
                         int numberFromFile = int.Parse(reader.ReadLine());
                         tabForSort[ii] = numberFromFile;
@@ -120,17 +123,21 @@ namespace SortTest
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
+
             if (sortType=="insert") {
-                for (j = amountOfNumbers - 2; j >= 0; j--)
+                for (ii = 0; ii < repeatAmountVal; ii++)
                 {
-                    currentNumber = tabForSort[j];
-                    i = j + 1;
-                    while ((i < amountOfNumbers) && (currentNumber > tabForSort[i]))
+                    for (j = amountOfNumbers - 2; j >= 0; j--)
                     {
-                        tabForSort[i - 1] = tabForSort[i];
-                        i++;
+                        currentNumber = tabForSort[j];
+                        i = j + 1;
+                        while ((i < amountOfNumbers) && (currentNumber > tabForSort[i]))
+                        {
+                            tabForSort[i - 1] = tabForSort[i];
+                            i++;
+                        }
+                        tabForSort[i - 1] = currentNumber;
                     }
-                    tabForSort[i - 1] = currentNumber;
                 }
             }
 
