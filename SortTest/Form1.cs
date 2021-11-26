@@ -47,7 +47,7 @@ namespace SortTest
             sortType = "fast";
         }
 
-        private readonly int amountOfNumbers = 10000;
+        private int amountOfNumbers = 10000;
 
         internal static class RandomNumbers
         {
@@ -82,7 +82,11 @@ namespace SortTest
 
         private void testBtn_Click(object sender, EventArgs e)
         {
-            int[] d = new int[amountOfNumbers];
+            if (loaded)
+            {
+                amountOfNumbers = (File.ReadAllLines("test.txt").Length);
+            }
+            int[] tabForSort = new int[amountOfNumbers];
             int i;
             int j;
             int x;
@@ -90,6 +94,18 @@ namespace SortTest
             int pmax;
             int p;
             int piwot;
+            if (loaded)
+            {
+                using (TextReader reader = File.OpenText("test.txt"))
+                {
+                    for (int ii = 0; ii <= File.ReadAllLines("test.txt").Length; ii++)
+                    {
+                        int numberFromFile = int.Parse(reader.ReadLine());
+                        Debug.Write(numberFromFile);
+                        tabForSort[ii] = numberFromFile;
+                    }
+                }
+            }
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -99,20 +115,20 @@ namespace SortTest
                     RandomNumbers.Seed();
                     for (i = 0; i < amountOfNumbers; i++)
                     {
-                        d[i] = RandomNumbers.NextNumber() % 100;
+                        tabForSort[i] = RandomNumbers.NextNumber() % 100;
                     }
                 }
 
                 for (j = amountOfNumbers - 2; j >= 0; j--)
                 {
-                    x = d[j];
+                    x = tabForSort[j];
                     i = j + 1;
-                    while ((i < amountOfNumbers) && (x > d[i]))
+                    while ((i < amountOfNumbers) && (x > tabForSort[i]))
                     {
-                        d[i - 1] = d[i];
+                        tabForSort[i - 1] = tabForSort[i];
                         i++;
                     }
-                    d[i - 1] = x;
+                    tabForSort[i - 1] = x;
                 }
             }
 
@@ -122,7 +138,7 @@ namespace SortTest
                     RandomNumbers.Seed();
                     for (i = 0; i < amountOfNumbers; i++)
                     {
-                        d[i] = RandomNumbers.NextNumber() % 100;
+                        tabForSort[i] = RandomNumbers.NextNumber() % 100;
                     }
                 }
 
@@ -130,9 +146,9 @@ namespace SortTest
                 {
                     for (i = 0; i < amountOfNumbers - 1; i++)
                     {
-                        if (d[i] > d[i + 1])
+                        if (tabForSort[i] > tabForSort[i + 1])
                         {
-                            (d[i], d[i + 1]) = (d[i + 1], d[i]);
+                            (tabForSort[i], tabForSort[i + 1]) = (tabForSort[i + 1], tabForSort[i]);
                         }
                     }
                 }
@@ -143,7 +159,7 @@ namespace SortTest
                     RandomNumbers.Seed();
                     for (i = 0; i < amountOfNumbers; i++)
                     {
-                        d[i] = RandomNumbers.NextNumber() % 100;
+                        tabForSort[i] = RandomNumbers.NextNumber() % 100;
                     }
                 }
 
@@ -154,9 +170,9 @@ namespace SortTest
                     p = -1;
                     for (i = pmin; i <= pmax; i++)
                     {
-                        if (d[i] > d[i + 1])
+                        if (tabForSort[i] > tabForSort[i + 1])
                         {
-                            (d[i], d[i + 1]) = (d[i + 1], d[i]);
+                            (tabForSort[i], tabForSort[i + 1]) = (tabForSort[i + 1], tabForSort[i]);
                             p = i;
                         }
                     }
@@ -168,9 +184,9 @@ namespace SortTest
                     p = -1;
                     for (i = pmax; i >= pmin; i--)
                     {
-                        if (d[i] > d[i + 1])
+                        if (tabForSort[i] > tabForSort[i + 1])
                         {
-                            (d[i], d[i + 1]) = (d[i + 1], d[i]);
+                            (tabForSort[i], tabForSort[i + 1]) = (tabForSort[i + 1], tabForSort[i]);
                             p = i;
                         }
                     }
@@ -183,18 +199,18 @@ namespace SortTest
                 {
                     int i;
                     i = (left + right) / 2;
-                    piwot = d[i];
-                    d[i] = d[right];
+                    piwot = tabForSort[i];
+                    tabForSort[i] = tabForSort[right];
                     for (j = i = left; i < right; i++)
                     {
-                        if (d[i] < piwot)
+                        if (tabForSort[i] < piwot)
                         {
-                            (d[i], d[j]) = (d[j], d[i]);
+                            (tabForSort[i], tabForSort[j]) = (tabForSort[j], tabForSort[i]);
                             j++;
                         }
                     }
-                    d[right] = d[j];
-                    d[j] = piwot;
+                    tabForSort[right] = tabForSort[j];
+                    tabForSort[j] = piwot;
                     if (left < j - 1)
                     {
                         fastSort(left, j - 1);
@@ -210,7 +226,7 @@ namespace SortTest
                     RandomNumbers.Seed();
                     for (i = 0; i < amountOfNumbers; i++)
                     {
-                        d[i] = RandomNumbers.NextNumber() % 100;
+                        tabForSort[i] = RandomNumbers.NextNumber() % 100;
                     }
                 }
 
@@ -223,14 +239,16 @@ namespace SortTest
 
         private void loadFile_Click(object sender, EventArgs e)
         {
-            using (TextReader reader = File.OpenText("test.txt"))
+            switch (loaded)
             {
-                for(int i=1;i <= File.ReadAllLines("test.txt").Length;i++)
-                {
-                    int x = int.Parse(reader.ReadLine());
-                    Debug.Write(x);
-                }
-                loaded = true;
+                case true:
+                    loadFile.ForeColor = Color.Red;
+                    loaded = false;
+                    break;
+                case false:
+                    loadFile.ForeColor = Color.Green;
+                    loaded = true;
+                    break;
             }
         }
     }

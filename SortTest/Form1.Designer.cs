@@ -109,6 +109,7 @@ namespace SortTest
             // 
             // loadFile
             // 
+            this.loadFile.ForeColor = System.Drawing.Color.Red;
             this.loadFile.Location = new System.Drawing.Point(632, 12);
             this.loadFile.Name = "loadFile";
             this.loadFile.Size = new System.Drawing.Size(75, 23);
