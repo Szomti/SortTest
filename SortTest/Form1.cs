@@ -23,37 +23,37 @@ namespace SortTest
 
         private void instertSort_Click(object sender, EventArgs e)
         {
-            currentSort.Text = "Sortowanie Przez Wstawianie";
+            currentSort.Text = "Insertion Sort";
             sortType = "insert";
         }
 
         private void bubbleSort_Click(object sender, EventArgs e)
         {
-            currentSort.Text = "Sortowanie Bąbelkowe";
+            currentSort.Text = "Bubble Sort";
             sortType = "bubble";
         }
 
         private void doubleBubbleSort_Click(object sender, EventArgs e)
         {
-            currentSort.Text = "Sortowanie Bąbelkowe Dwukierunkowe";
+            currentSort.Text = "Bidirectional Bubble Sort";
             sortType = "doubleBubble";
         }
 
         private void quickSort_Click(object sender, EventArgs e)
         {
-            currentSort.Text = "Sortowanie Szybkie";
+            currentSort.Text = "Quick Sort";
             sortType = "quick";
         }
 
         private void heapSort_Click(object sender, EventArgs e)
         {
-            currentSort.Text = "Sortowanie Przez Kopcowanie";
+            currentSort.Text = "Heap Sort";
             sortType = "heap";
         }
 
         private void merchSort_Click(object sender, EventArgs e)
         {
-            currentSort.Text = "Sortowanie Przez Scalanie";
+            currentSort.Text = "Merge Sort";
             sortType = "merge";
         }
 

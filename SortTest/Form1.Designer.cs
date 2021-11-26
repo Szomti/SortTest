@@ -71,7 +71,7 @@ namespace SortTest
             this.bubbleSort.Name = "bubbleSort";
             this.bubbleSort.Size = new System.Drawing.Size(200, 25);
             this.bubbleSort.TabIndex = 2;
-            this.bubbleSort.Text = "Bąbelkowe";
+            this.bubbleSort.Text = "Bubble Sort";
             this.bubbleSort.UseVisualStyleBackColor = true;
             this.bubbleSort.Click += new System.EventHandler(this.bubbleSort_Click);
             // 
@@ -81,7 +81,7 @@ namespace SortTest
             this.doubleBubbleSort.Name = "doubleBubbleSort";
             this.doubleBubbleSort.Size = new System.Drawing.Size(200, 25);
             this.doubleBubbleSort.TabIndex = 3;
-            this.doubleBubbleSort.Text = "Bąbelkowe Dwukierunkowe";
+            this.doubleBubbleSort.Text = "Bidirectional Bubble Sort";
             this.doubleBubbleSort.UseVisualStyleBackColor = true;
             this.doubleBubbleSort.Click += new System.EventHandler(this.doubleBubbleSort_Click);
             // 
@@ -91,7 +91,7 @@ namespace SortTest
             this.quickSort.Name = "quickSort";
             this.quickSort.Size = new System.Drawing.Size(200, 25);
             this.quickSort.TabIndex = 4;
-            this.quickSort.Text = "Szybkie";
+            this.quickSort.Text = "Quick Sort";
             this.quickSort.UseVisualStyleBackColor = true;
             this.quickSort.Click += new System.EventHandler(this.quickSort_Click);
             // 
@@ -101,7 +101,7 @@ namespace SortTest
             this.instertSort.Name = "instertSort";
             this.instertSort.Size = new System.Drawing.Size(200, 25);
             this.instertSort.TabIndex = 5;
-            this.instertSort.Text = "Przez Wstawianie";
+            this.instertSort.Text = "Insertion Sort";
             this.instertSort.UseVisualStyleBackColor = true;
             this.instertSort.Click += new System.EventHandler(this.instertSort_Click);
             // 
@@ -131,7 +131,7 @@ namespace SortTest
             this.heapSort.Name = "heapSort";
             this.heapSort.Size = new System.Drawing.Size(200, 25);
             this.heapSort.TabIndex = 8;
-            this.heapSort.Text = "Przez Kopcowanie";
+            this.heapSort.Text = "Heap Sort";
             this.heapSort.UseVisualStyleBackColor = true;
             this.heapSort.Click += new System.EventHandler(this.heapSort_Click);
             // 
@@ -141,7 +141,7 @@ namespace SortTest
             this.mergeSort.Name = "mergeSort";
             this.mergeSort.Size = new System.Drawing.Size(200, 25);
             this.mergeSort.TabIndex = 9;
-            this.mergeSort.Text = "Przez Scalanie";
+            this.mergeSort.Text = "Merge Sort";
             this.mergeSort.UseVisualStyleBackColor = true;
             this.mergeSort.Click += new System.EventHandler(this.merchSort_Click);
             // 
