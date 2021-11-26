@@ -19,6 +19,7 @@ namespace SortTest
         long fastestSortTimeMS = long.MaxValue;
         long slowestSortTimeMS = long.MinValue;
         int repeatAmountVal = 1;
+        string filePath = string.Empty;
 
         private void instertSort_Click(object sender, EventArgs e)
         {
@@ -86,11 +87,11 @@ namespace SortTest
         {
             if (loaded)
             {
-                amountOfNumbers = (File.ReadAllLines("test.txt").Length);
+                amountOfNumbers = (File.ReadAllLines(filePath).Length);
             }
             else
             {
-                amountOfNumbers = 100000;
+                amountOfNumbers = 10000;
             }
             int[] tabForSort = new int[amountOfNumbers];
             int[] p = new int[amountOfNumbers];
@@ -120,9 +121,9 @@ namespace SortTest
             {
                 if (loaded)
                 {
-                    using (TextReader reader = File.OpenText("test.txt"))
+                    using (TextReader reader = File.OpenText(filePath))
                     {
-                        for (ii = 0; ii < File.ReadAllLines("test.txt").Length; ii++)
+                        for (ii = 0; ii < File.ReadAllLines(filePath).Length; ii++)
                         {
                             int numberFromFile = int.Parse(reader.ReadLine());
                             tabForSort[ii] = numberFromFile;
@@ -142,7 +143,6 @@ namespace SortTest
             var stopwatch = new Stopwatch();
             void sortTime(long sortingTimeMS)
             {
-                Debug.Write(currentSort.Text + "\nTime: " + sortingTimeMS + " ms\n\n");
                 sortingTime.Text = "Time: " + (sortingTimeMS).ToString() + " ms";
                 if (sortingTimeMS < fastestSortTimeMS)
                 {
@@ -364,6 +364,19 @@ namespace SortTest
                     loaded = false;
                     break;
                 case false:
+                    using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                    {
+                        openFileDialog.InitialDirectory = "c:\\";
+                        openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                        openFileDialog.FilterIndex = 2;
+                        openFileDialog.RestoreDirectory = true;
+
+                        if (openFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            //Get the path of specified file
+                            filePath = openFileDialog.FileName;
+                        }
+                    }
                     loadFile.ForeColor = Color.Green;
                     loaded = true;
                     break;
