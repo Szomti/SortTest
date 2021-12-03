@@ -102,14 +102,18 @@ namespace SortTest
             }
             int i; // variable for "for"
             int j; // variable for "for"
+            int ii; // variable for "for"
             int k;
             int m;
-            int ii;
             int currentNumber;
             int positionMin;
             int positionMax;
             int currentPosition;
             int piwot;
+            int firstOld;
+            int firstNewHelp; // Auxiliary Variable
+            int firstOldHelp; // Auxiliary Variable
+
             if (executeAmount.Text != null || executeAmount.Text != "")
             {
                 executeAmountVal = int.Parse(executeAmount.Text);
@@ -324,29 +328,24 @@ namespace SortTest
                 {
                     desort();
                     stopwatch.Start();
-                    void MergeSort(int i_p, int i_k)
+                    void MergeSort(int firstNew, int lastOld)
                     {
-                        int i_s;
-                        int i1;
-                        int i2;
-                        int i;
-
-                        i_s = (i_p + i_k + 1) / 2;
-                        if (i_s - i_p > 1)
+                        firstOld = (firstNew + lastOld + 1) / 2;
+                        if (firstOld - firstNew > 1)
                         {
-                            MergeSort(i_p, i_s - 1);
+                            MergeSort(firstNew, firstOld - 1);
                         }
-                        if (i_k - i_s > 0)
+                        if (lastOld - firstOld > 0)
                         {
-                            MergeSort(i_s, i_k);
+                            MergeSort(firstOld, lastOld);
                         }
-                        i1 = i_p;
-                        i2 = i_s;
-                        for (i = i_p; i <= i_k; i++)
+                        firstNewHelp = firstNew;
+                        firstOldHelp = firstOld;
+                        for (i = firstNew; i <= lastOld; i++)
                         {
-                            p[i] = ((i1 == i_s) || ((i2 <= i_k) && (tabForSort[i1] > tabForSort[i2]))) ? tabForSort[i2++] : tabForSort[i1++];
+                            p[i] = ((firstNewHelp == firstOld) || ((firstOldHelp <= lastOld) && (tabForSort[firstNewHelp] > tabForSort[firstOldHelp]))) ? tabForSort[firstOldHelp++] : tabForSort[firstNewHelp++];
                         }
-                        for (i = i_p; i <= i_k; i++)
+                        for (i = firstNew; i <= lastOld; i++)
                         {
                             tabForSort[i] = p[i];
                         }
