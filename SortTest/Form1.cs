@@ -366,7 +366,7 @@ namespace SortTest
                     loadFile.ForeColor = Color.Red;
                     loaded = false;
                     filePath = string.Empty;
-                    usingFile.Text = "File:\n" + "Not Found";
+                    usingFile.Text = "File:\n" + "Not Found" + "\n ( Using Random Numbers )";
                     break;
                 case false:
                     using (OpenFileDialog openFileDialog = new OpenFileDialog())
