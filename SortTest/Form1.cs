@@ -365,6 +365,7 @@ namespace SortTest
                 case true:
                     loadFile.ForeColor = Color.Red;
                     loaded = false;
+                    filePath = string.Empty;
                     usingFile.Text = "File:\n" + "Not Found";
                     break;
                 case false:
@@ -381,9 +382,12 @@ namespace SortTest
                             filePath = openFileDialog.FileName;
                         }
                     }
-                    loadFile.ForeColor = Color.Green;
-                    loaded = true;
-                    usingFile.Text = "File:\n" + Path.GetFileName(filePath);
+                    if(filePath != "")
+                    {
+                        loadFile.ForeColor = Color.Green;
+                        loaded = true;
+                        usingFile.Text = "File:\n" + Path.GetFileName(filePath);
+                    }
                     break;
             }
         }
